@@ -42,6 +42,7 @@ public class Post extends Timestamped {
             this.contents = requestDto.getContent();
         }
 
+
     }
 
     public boolean delete(String password) {

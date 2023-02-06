@@ -16,23 +16,20 @@ public class PostController {
 
     private final PostService postService;
 
-//    @GetMapping("/")
-//    public ModelAndView home() {
-//        return new ModelAndView("index");
-//    }
-
     @PostMapping("/api/post")
-    public Post createPost(@RequestBody PostRequestDto requestDto) {
+    public List<PostResponseDto> createPost(@RequestBody PostRequestDto requestDto) {
         return postService.createPost(requestDto);
     }
 
     @GetMapping("/api/posts")
-    public List<Post> getPosts() {
+    public List<PostResponseDto> getPosts() {
+
         return postService.getPosts();
     }
 
     @GetMapping("/api/posts/{id}")
     public PostResponseDto getPost(@PathVariable Long id) {
+
         return postService.findById(id);
     }
 

@@ -16,6 +16,8 @@ public class PostResponseDto {
 
     private LocalDateTime createdAt;
 
+    private LocalDateTime modifiedAt;
+
 
 
     public PostResponseDto(Post entity) {
@@ -23,6 +25,7 @@ public class PostResponseDto {
         this.author = entity.getAuthor();
         this.contents = entity.getContents();
         this.createdAt = entity.getCreatedAt();
+        this.modifiedAt = entity.getModifiedAt();
     }
 }
 
