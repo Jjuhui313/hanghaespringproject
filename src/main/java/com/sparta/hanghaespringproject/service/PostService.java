@@ -18,10 +18,18 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public List<PostResponseDto> createPost(PostRequestDto requestDto) {
+    public PostResponseDto createPost(PostRequestDto requestDto) {
         Post post = new Post(requestDto);
         postRepository.save(post);
-        return postRepository.findAllByOrderByCreatedAtDesc().stream().map(PostResponseDto::new).collect(Collectors.toList());
+
+
+        return PostResponseDto.builder()
+                .createdAt(post.getCreatedAt())
+                .modifiedAt(post.getModifiedAt())
+                .title(post.getTitle())
+                .author(post.getAuthor())
+                .contents(post.getContents())
+                .build();
     }
 
     @Transactional(readOnly = true)
