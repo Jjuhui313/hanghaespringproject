@@ -23,13 +23,7 @@ public class PostService {
         postRepository.save(post);
 
 
-        return PostResponseDto.builder()
-                .createdAt(post.getCreatedAt())
-                .modifiedAt(post.getModifiedAt())
-                .title(post.getTitle())
-                .author(post.getAuthor())
-                .contents(post.getContents())
-                .build();
+        return PostResponseDto.of(post);
     }
 
     @Transactional(readOnly = true)

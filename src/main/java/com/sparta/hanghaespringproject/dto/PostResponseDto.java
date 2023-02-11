@@ -29,12 +29,15 @@ public class PostResponseDto {
         this.modifiedAt = entity.getModifiedAt();
     }
 
-    public PostResponseDto(String title, String author, String contents, LocalDateTime createdAt, LocalDateTime modifiedAt) {
-        this.title = title;
-        this.author = author;
-        this.contents = contents;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+    public static PostResponseDto of(Post post) {
+        return PostResponseDto.builder()
+                .createdAt(post.getCreatedAt())
+                .modifiedAt(post.getModifiedAt())
+                .title(post.getTitle())
+                .author(post.getAuthor())
+                .contents(post.getContents())
+                .build();
+
     }
 }
 
